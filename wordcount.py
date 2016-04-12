@@ -4,23 +4,21 @@ def count_words(test_file):
 
     data = open(test_file)
 
-    list_of_words = []
-    dict_of_words = {}
+    list_of_words = []  # Create an empty list to store lists of [word, word count]
+    dict_of_words = {}  # Create a dictionary to store word : word count pairs
 
     for line in data:
         line = line.rstrip()
         line = line.split(" ")
-        list_of_words.extend(line)
+        list_of_words.extend(line)  # Extend list_of_words with all words from .txt
+
     for word in list_of_words:
-        dict_of_words[word] = list_of_words.count(word) # Setting keys and values and adding them to dictionary.
-        # word_key = dict_of_words[word]
-        # word_key_value = list_of_words.count(word)
+        dict_of_words[word] = dict_of_words.get(word, 0) + 1
 
+    for word, count in dict_of_words.items():
+        print word, count
 
-    print dict_of_words
-    # print dict_of_words[look_up_this_word]
     return dict_of_words
 
 
-# count_words("test.txt", "seven")
 count_words("test.txt")
